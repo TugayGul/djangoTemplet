@@ -10,9 +10,14 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    brand = serializers.SlugRelatedField(
+        queryset=Brand.objects.all(),
+        slug_field='name',
+        required=True)
+
     class Meta:
         model = Product
-        fields = ['id', 'name', 'description', 'weight', 'daily_hiring_price', 'brand_id']
+        fields = ['id', 'name', 'description', 'weight', 'daily_hiring_price', 'brand']
 
 
 class OrderSerializer(serializers.ModelSerializer):
