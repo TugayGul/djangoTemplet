@@ -7,6 +7,9 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/{self.name}/'
+
     @classmethod
     def get_all(cls):
         return cls.objects.all()
@@ -24,6 +27,9 @@ class Product(models.Model):
     weight = models.IntegerField(blank=False, null=False)
     daily_hiring_price = models.IntegerField(blank=False, null=False)
     brand = models.ForeignKey(Brand, related_name='prodcuts', on_delete=models.CASCADE, blank=False, null=False)
+
+    def get_absolute_url(self):
+        return f'/{self.name}/'
 
     @classmethod
     def get_all(cls):

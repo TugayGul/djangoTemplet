@@ -9,6 +9,7 @@ from apples.product.models import Product, Brand
 from apples.action.models import Order
 from api.serializers import BrandSerializer, ProductSerializer, OrderSerializer
 from api.filters.product import ProductFilter
+from django.core.exceptions import ValidationError
 
 
 class BrandList(ListCreateAPIView):
@@ -47,7 +48,7 @@ class ProductList(ListCreateAPIView):
 
         try:
             brand = Brand.objects.get(name=brand)
-        except:
+        except Brand.DoesNotExist:
             response = {
                 'error': f'Brand with id {brand}, doesn\'t exist in DB.'
             }
@@ -66,6 +67,14 @@ class ProductList(ListCreateAPIView):
         serializer = ProductSerializer(product)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class LatestProductList(APIView):
+    @staticmethod
+    def get(request):
+        products = Product.objects.all()[0:3]
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
 
 
 class ProductDetail(APIView):
@@ -138,7 +147,7 @@ class OrderList(ListCreateAPIView):
 
         try:
             product = Product.objects.get(id=product_id)
-        except:
+        except Product.DoesNotExist:
             response = {
                 'error': f'PRODUCT with id {product_id}, doesn\'t exist in DB.'
             }
@@ -147,7 +156,7 @@ class OrderList(ListCreateAPIView):
 
         try:
             start_at = datetime.strptime(request.data.get('start_at'), '%Y-%m-%d')
-        except:
+        except ValidationError:
             response = {
                 'error': 'Start date is not valid'
             }
@@ -156,7 +165,7 @@ class OrderList(ListCreateAPIView):
 
         try:
             end_at = datetime.strptime(request.data.get('end_at'), '%Y-%m-%d')
-        except:
+        except ValidationError:
             response = {
                 'error': 'End date is not valid'
             }

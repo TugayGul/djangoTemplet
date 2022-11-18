@@ -13,7 +13,7 @@ class ProductSerializer(serializers.ModelSerializer):
     brand = serializers.SlugRelatedField(
         queryset=Brand.objects.all(),
         slug_field='name',
-        required=True)
+        required=False)
 
     class Meta:
         model = Product
