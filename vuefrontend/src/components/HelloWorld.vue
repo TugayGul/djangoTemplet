@@ -4,17 +4,17 @@
       <v-col cols="12">
         <h3>List:</h3>
         <v-list>
-          <v-list-item-group v-model="selected" color="black" multiple>
+          <v-list-item v-model="selected" color="black" multiple>
             <v-list-item
               v-for="item in productlist"
               :key="item.id"
               @click="updateStatus(item)"
             >
-              <v-list-item-icon>
+              <v-list-item-title>
                 {{ item.id }}
-              </v-list-item-icon>
+              </v-list-item-title>
 
-              <v-list-item-content>
+              <v-list-item-action>
                 <v-list-item-title>
                   <strong>{{ item.name }}</strong>
                 </v-list-item-title>
@@ -22,7 +22,7 @@
                 <v-list-item-subtitle>
                   {{ item.description }}
                 </v-list-item-subtitle>
-              </v-list-item-content>
+              </v-list-item-action>
 
               <v-list-item-action>
                 <v-checkbox
@@ -31,7 +31,7 @@
                 ></v-checkbox>
               </v-list-item-action>
             </v-list-item>
-          </v-list-item-group>
+          </v-list-item>
         </v-list>
       </v-col>
     </v-row>
@@ -54,7 +54,7 @@ export default {
       user: 1,
     },
     productlist: [],
-    url: "http://localhost:8000/api/product/",
+    url: "http://localhost:8000/product",
   }),
   mounted() {
     // Get
@@ -63,7 +63,7 @@ export default {
   methods: {
     getProducts() {
       axios.get(`${this.url}?ordering=is_complete`).then((response) => {
-        this.todoList = response.data;
+        this.productlist = response.data;
         response.data.forEach((element, index) => {
           if (!element.is_complete) this.selected.push(index);
           this.$forceUpdate();
