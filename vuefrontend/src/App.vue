@@ -2,7 +2,12 @@
   <v-app>
     <v-app-bar app color="red" dark>
       <div class="d-flec allign center">
-        <v-toolbar-title>TEMPLET</v-toolbar-title>
+        <v-toolbar-title>
+          <nav class="nav" onclick="">
+            <v-toolbar-title style="display: block">Login</v-toolbar-title>
+            <v-toolbar-title style="display: block">Sign Up</v-toolbar-title>
+          </nav></v-toolbar-title
+        >
       </div>
     </v-app-bar>
     <v-main>
