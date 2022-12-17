@@ -3,9 +3,16 @@
     <v-app-bar app color="red" dark>
       <div class="d-flec allign center">
         <v-toolbar-title>
-          <nav class="nav" onclick="">
-            <v-toolbar-title style="display: block">Login</v-toolbar-title>
-            <v-toolbar-title style="display: block">Sign Up</v-toolbar-title>
+          <nav class="navbar-fixed-top">
+            <v-toolbar-title style="display: inline-block"
+              ><a href="components/LoginPage.vue">Login</a></v-toolbar-title
+            >
+            <v-toolbar-title style="display: inline-block"
+              ><a href="components/HelloWorld.vue">Home</a></v-toolbar-title
+            >
+            <v-toolbar-title style="display: inline-block"
+              ><a href="components/LoginPage.vue">Sign Up</a></v-toolbar-title
+            >
           </nav></v-toolbar-title
         >
       </div>
