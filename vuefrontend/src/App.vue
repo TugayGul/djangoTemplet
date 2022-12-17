@@ -5,13 +5,13 @@
         <v-toolbar-title>
           <nav class="navbar-fixed-top">
             <v-toolbar-title style="display: inline-block"
-              ><a href="components/LoginPage.vue">Login</a></v-toolbar-title
+              ><a href="views/LoginPage.vue">Login</a></v-toolbar-title
             >
             <v-toolbar-title style="display: inline-block"
-              ><a href="components/HelloWorld.vue">Home</a></v-toolbar-title
+              ><a href="components/Home.vue">Home</a></v-toolbar-title
             >
             <v-toolbar-title style="display: inline-block"
-              ><a href="components/LoginPage.vue">Sign Up</a></v-toolbar-title
+              ><a href="views/LoginPage.vue">Sign Up</a></v-toolbar-title
             >
           </nav></v-toolbar-title
         >
