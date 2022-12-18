@@ -8,7 +8,7 @@
               ><a href="views/LoginPage.vue">Login</a></v-toolbar-title
             >
             <v-toolbar-title style="display: inline-block"
-              ><a href="components/Home.vue">Home</a></v-toolbar-title
+              ><a href="components/HomePage.vue">Home</a></v-toolbar-title
             >
             <v-toolbar-title style="display: inline-block"
               ><a href="views/LoginPage.vue">Sign Up</a></v-toolbar-title
