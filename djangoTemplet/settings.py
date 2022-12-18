@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     "http://localhost:8081",
     "http://192.168.1.45:8081",
     "localhost",
+    "127.0.0.1",
 ]
 CORS_ORIGIN_ALLOW = True
 CORS_ALLOWED_ORIGINS = [
@@ -53,8 +54,12 @@ INSTALLED_APPS = [
     # implemented ones
     'api.apps.ApiConfig',
     'apples.product.apps.ProductConfig',
-    'apples.action.apps.ActionConfig'
+    'apples.action.apps.ActionConfig',
+    'apples.users.apps.UsersConfig'
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
